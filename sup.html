@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIME PASS WITH DEEPSEEK</title>
+    <base target="_self">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073; }
+            50% { text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6; }
+            100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073; }
+        }
+        
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .glowing {
+            animation: glow 3s ease infinite;
+        }
+        
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 1s ease-out forwards;
+        }
+        
+        .name-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .letter {
+            display: inline-block;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+            transform-origin: center bottom;
+        }
+        
+        .letter::before, .letter::after {
+            content: attr(data-letter);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .letter::before {
+            color: rgba(255,255,255,0.3);
+            transform: translateZ(-30px);
+            z-index: -1;
+        }
+        
+        .letter::after {
+            color: rgba(255,192,203,0.5);
+            transform: rotateX(90deg) translateY(15px);
+            z-index: -2;
+        }
+        
+        .petal {
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            animation: falling linear infinite;
+        }
+        
+        @keyframes falling {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .heart-beat {
+            animation: heartbeat 1.5s ease infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-pink-900 via-purple-900 to-indigo-900 overflow-hidden text-white">
+    <!-- Floating Petals Background -->
+    <div id="petals-container"></div>
+    
+    <div class="container mx-auto px-4 py-12 flex flex-col items-center justify-center min-h-screen">
+        <!-- 3D Animated Name -->
+        <div class="name-3d text-center mb-16">
+            <h1 class="text-6xl md:text-8xl font-bold mb-4 floating">
+                <span class="letter" data-letter="S">S</span>
+                <span class="letter" data-letter="U">U</span>
+                <span class="letter" data-letter="P">P</span>
+                <span class="letter" data-letter="R">R</span>
+                <span class="letter" data-letter="I">I</span>
+                <span class="letter" data-letter="Y">Y</span>
+                <span class="letter" data-letter="A">A</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-light italic">A name that dances like starlight</p>
+        </div>
+        
+        <!-- Beauty Description -->
+        <div class="glass-card p-8 max-w-3xl w-full mb-16 transform transition-all duration-500 hover:scale-105">
+            <div class="flex justify-center mb-6">
+                <div class="heart-beat text-4xl">❤️</div>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 glowing" style="font-family: 'Dancing Script', cursive;">
+                The Radiance of Supriya
+            </h2>
+            <div class="space-y-4 text-lg">
+                <p>Supriya is <span class="font-semibold text-pink-200">moonlight made human</span> - her presence illuminates every room like the soft glow of a thousand fireflies.</p>
+                <p>Her smile could melt glaciers, a <span class="font-semibold text-purple-200">sunrise of joy</span> that makes flowers bloom in winter.</p>
+                <p>When she speaks, her voice carries the <span class="font-semibold text-blue-200">melody of mountain streams</span>, each word a note in nature's symphony.</p>
+                <p>Her eyes hold <span class="font-semibold text-indigo-200">galaxies of wisdom</span>, deep pools reflecting the universe's secrets.</p>
+            </div>
+        </div>
+        
+        <!-- Qualities Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 w-full max-w-4xl">
+            <div class="bg-white bg-opacity-10 p-4 rounded-xl transform transition hover:scale-110 hover:bg-opacity-20">
+                <div class="text-4xl mb-2">🌹</div>
+                <h3 class="font-bold">Grace</h3>
+                <p class="text-sm">Moves like poetry in motion</p>
+            </div>
+            <div class="bg-white bg-opacity-10 p-4 rounded-xl transform transition hover:scale-110 hover:bg-opacity-20">
+                <div class="text-4xl mb-2">🌟</div>
+                <h3 class="font-bold">Brilliance</h3>
+                <p class="text-sm">Mind sharper than diamonds</p>
+            </div>
+            <div class="bg-white bg-opacity-10 p-4 rounded-xl transform transition hover:scale-110 hover:bg-opacity-20">
+                <div class="text-4xl mb-2">💖</div>
+                <h3 class="font-bold">Compassion</h3>
+                <p class="text-sm">Heart warmer than sunshine</p>
+            </div>
+            <div class="bg-white bg-opacity-10 p-4 rounded-xl transform transition hover:scale-110 hover:bg-opacity-20">
+                <div class="text-4xl mb-2">🎨</div>
+                <h3 class="font-bold">Creativity</h3>
+                <p class="text-sm">Imagination without limits</p>
+            </div>
+        </div>
+        
+        <!-- Final Tribute -->
+        <div class="text-center max-w-2xl">
+            <p class="text-xl italic mb-4">
+                "Supriya is the kind of beauty that inspires poets and painters - not just in her appearance, but in the way she makes the world more beautiful simply by being in it."
+            </p>
+            <div class="text-6xl mt-6 floating">✨</div>
+        </div>
+    </div>
+    
+    <script>
+        // Create floating petals
+        function createPetals() {
+            const container = document.getElementById('petals-container');
+            const petalTypes = ['🌸', '🌺', '🌼', '🌹', '🍁'];
+            
+            for (let i = 0; i < 20; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.innerHTML = petalTypes[Math.floor(Math.random() * petalTypes.length)];
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                petal.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(petal);
+            }
+        }
+        
+        // Sparkle effect on click
+        function createSparkle(e) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+            sparkle.style.width = sparkle.style.height = (Math.random() * 20 + 5) + 'px';
+            document.body.appendChild(sparkle);
+            
+            // Remove sparkle after animation
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+        
+        // Letter hover effects
+        function setupLetters() {
+            const letters = document.querySelectorAll('.letter');
+            
+            letters.forEach(letter => {
+                letter.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) rotateX(20deg) rotateY(20deg)';
+                    this.style.color = getRandomColor();
+                });
+                
+                letter.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.style.color = 'white';
+                });
+            });
+        }
+        
+        function getRandomColor() {
+            const colors = ['#ff9ff3', '#feca57', '#ff6b6b', '#48dbfb', '#1dd1a1'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createPetals();
+            setupLetters();
+            
+            document.body.addEventListener('click', createSparkle);
+            
+            // Make letters dance periodically
+            setInterval(() => {
+                const letters = document.querySelectorAll('.letter');
+                letters.forEach(letter => {
+                    letter.style.transform = `translateY(${Math.random() * 10 - 5}px) rotate(${Math.random() * 10 - 5}deg)`;
+                });
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
